@@ -32,6 +32,11 @@ class HomePage extends StatelessWidget {
             repository: context.read<Repository>(),
           )..add(NewArrivalFetched()),
         ),
+        BlocProvider(
+          create: (_) => NewShopBloc(
+            repository: context.read<Repository>(),
+          )..add(NewShopFetched()),
+        ),
       ],
       child: Scaffold(
         body: SafeArea(
@@ -71,7 +76,7 @@ class StoryList extends StatelessWidget {
                   return NewArrivalList();
                 }
                 if (index == 7) {
-                  return SizedBox();
+                  return NewShopList();
                 }
                 if (index > 2) {
                   itemIndex -= 1;

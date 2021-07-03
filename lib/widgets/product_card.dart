@@ -21,7 +21,7 @@ class ProductCard extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: screenSize.height * 0.134,
+              height: screenSize.height * 0.118,
               width: screenSize.width * trendingItemWidthMultiplier,
               decoration: BoxDecoration(
                 color: Colors.blueAccent,
@@ -36,6 +36,7 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             Container(
+              padding: EdgeInsets.only(top: 4),
               width: screenSize.width * trendingItemWidthMultiplier,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(

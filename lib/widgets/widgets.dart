@@ -8,3 +8,4 @@ export 'trending_product_list.dart';
 export 'icon_text.dart';
 export 'story_card.dart';
 export 'new_arrival_list.dart';
+export 'new_shop_list.dart';
