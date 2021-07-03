@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,19 +17,18 @@ class HomePage extends StatelessWidget {
             repository: context.read<Repository>(),
           )..add(TrendingSellerFetched()),
         ),
+        BlocProvider(
+          create: (_) => TrendingProductBloc(
+            repository: context.read<Repository>(),
+          )..add(TrendingProductFetched()),
+        ),
       ],
       child: Scaffold(
         body: SafeArea(
           child: Column(
             children: [
               TrendingSellerList(),
-              TrendingCardScaffold(
-                title: "Trending Products",
-                list: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [],
-                ),
-              ),
+              TrendingProductList(),
             ],
           ),
         ),

@@ -11,13 +11,16 @@ class Repository {
   var _client = Client();
 
   Future<List<Seller>> fetchTrendingSellers() async {
-    try {
-      final url = Uri.parse("$_root&opt=trending_seller");
-      final response = await _client.get(url);
-      final data = json.decode(response.body) as List;
-      return (data[0] as List).map((item) => Seller.fromJson(item)).toList();
-    } catch (e) {
-      throw e;
-    }
+    final url = Uri.parse("$_root&opt=trending_seller");
+    final response = await _client.get(url);
+    final data = json.decode(response.body) as List;
+    return (data[0] as List).map((item) => Seller.fromJson(item)).toList();
+  }
+
+  Future<List<Product>> fetchTrendingProducts() async {
+    final url = Uri.parse("$_root&opt=trendingProducts");
+    final response = await _client.get(url);
+    final data = json.decode(response.body) as List;
+    return (data[0] as List).map((item) => Product.fromJson(item)).toList();
   }
 }
