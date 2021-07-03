@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
       ],
       child: Scaffold(
         body: SafeArea(
-          child: Column(
+          child: ListView(
             children: [
               TrendingSellerList(),
               TrendingProductList(),
