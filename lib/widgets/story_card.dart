@@ -31,6 +31,7 @@ class StoryCard extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
                 dense: true,

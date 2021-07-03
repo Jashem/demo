@@ -22,6 +22,11 @@ class HomePage extends StatelessWidget {
             repository: context.read<Repository>(),
           )..add(TrendingProductFetched()),
         ),
+        BlocProvider(
+          create: (_) => StoryBloc(
+            repository: context.read<Repository>(),
+          )..add(StoryFetched()),
+        ),
       ],
       child: Scaffold(
         body: SafeArea(
@@ -29,10 +34,65 @@ class HomePage extends StatelessWidget {
             children: [
               TrendingSellerList(),
               TrendingProductList(),
+              StoryList(),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class StoryList extends StatelessWidget {
+  const StoryList({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<StoryBloc, StoryState>(
+      builder: (_, state) {
+        switch (state.status) {
+          case StoryStatus.failure:
+            return SizedBox();
+          case StoryStatus.success:
+            return ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: state.stories.length + 2,
+              itemBuilder: (_, index) {
+                var itemIndex = index;
+                if (index == 3) {
+                  return SizedBox();
+                }
+                if (index == 7) {
+                  return SizedBox();
+                }
+                if (index > 2) {
+                  itemIndex -= 1;
+                }
+                if (index > 5) {
+                  itemIndex -= 1;
+                }
+
+                return StoryCard(
+                  profileImage: state.stories[itemIndex].shopLogo,
+                  name: state.stories[itemIndex].shopName,
+                  time: state.stories[itemIndex].friendlyTimeDiff,
+                  story: state.stories[itemIndex].story,
+                  storyImage: state.stories[itemIndex].storyImage,
+                  price:
+                      "${state.stories[itemIndex].unitPrice} ${state.stories[itemIndex].currencyCode}",
+                  availableStock:
+                      "${state.stories[itemIndex].availableStock} Available Stock",
+                  order: "${state.stories[itemIndex].orderQty} order(s)",
+                );
+              },
+            );
+          default:
+            return SizedBox();
+        }
+      },
     );
   }
 }

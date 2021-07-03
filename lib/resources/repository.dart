@@ -23,4 +23,11 @@ class Repository {
     final data = json.decode(response.body) as List;
     return (data[0] as List).map((item) => Product.fromJson(item)).toList();
   }
+
+  Future<List<Story>> fetchStories() async {
+    final url = Uri.parse("$_root&opt=stories");
+    final response = await _client.get(url);
+    final data = json.decode(response.body) as List;
+    return (data[0] as List).map((item) => Story.fromJson(item)).toList();
+  }
 }
