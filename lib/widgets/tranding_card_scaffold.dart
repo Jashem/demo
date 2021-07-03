@@ -1,6 +1,8 @@
 import 'package:demo/widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
+final trendingItemHeightMultiplier = 0.18;
+
 class TrendingCardScaffold extends StatelessWidget {
   final ListView list;
   final String title;
@@ -30,7 +32,10 @@ class TrendingCardScaffold extends StatelessWidget {
               ),
             ),
             BaseWidget(builder: (_, screenSize) {
-              return SizedBox(height: screenSize.height * 0.18, child: list);
+              return SizedBox(
+                height: screenSize.height * trendingItemHeightMultiplier,
+                child: list,
+              );
             })
           ],
         ),

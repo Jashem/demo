@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'widgets.dart';
 
+final trendingItemWidthMultiplier = 0.27;
+
 class SellerCard extends StatelessWidget {
   final String backgroundImage;
   final String profileImage;
@@ -20,8 +22,8 @@ class SellerCard extends StatelessWidget {
       return Stack(
         children: [
           Container(
-            height: screenSize.height * 0.18,
-            width: screenSize.width * 0.27,
+            height: screenSize.height * trendingItemHeightMultiplier,
+            width: screenSize.width * trendingItemWidthMultiplier,
             decoration: BoxDecoration(
               color: Colors.blueAccent,
               borderRadius: BorderRadius.circular(10),
