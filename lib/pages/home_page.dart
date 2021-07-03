@@ -27,6 +27,11 @@ class HomePage extends StatelessWidget {
             repository: context.read<Repository>(),
           )..add(StoryFetched()),
         ),
+        BlocProvider(
+          create: (_) => NewArrivalBloc(
+            repository: context.read<Repository>(),
+          )..add(NewArrivalFetched()),
+        ),
       ],
       child: Scaffold(
         body: SafeArea(
@@ -63,7 +68,7 @@ class StoryList extends StatelessWidget {
               itemBuilder: (_, index) {
                 var itemIndex = index;
                 if (index == 3) {
-                  return SizedBox();
+                  return NewArrivalList();
                 }
                 if (index == 7) {
                   return SizedBox();

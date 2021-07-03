@@ -18,7 +18,7 @@ class Story extends Equatable {
   final String? companyLogo;
   final String? companyEmail;
   final String currencyCode;
-  final double unitPrice;
+  final int unitPrice;
   final int discountAmount;
   final int discountPercent;
   final String iMyID;
@@ -71,7 +71,7 @@ class Story extends Equatable {
       myId: data["myId"],
       ezShopName: data["ezShopName"],
       currencyCode: data["currencyCode"],
-      unitPrice: data["unitPrice"].toDouble(),
+      unitPrice: data["unitPrice"],
       discountAmount: data["discountAmount"],
       discountPercent: data["discountPercent"],
       iMyID: data["iMyID"],
