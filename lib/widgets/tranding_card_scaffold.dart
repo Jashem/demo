@@ -1,3 +1,4 @@
+import 'package:demo/widgets/base_widget.dart';
 import 'package:flutter/material.dart';
 
 class TrendingCardScaffold extends StatelessWidget {
@@ -13,13 +14,13 @@ class TrendingCardScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 10, left: 10),
+              padding: const EdgeInsets.only(bottom: 10),
               child: Text(
                 title,
                 style: TextStyle(
@@ -28,7 +29,9 @@ class TrendingCardScaffold extends StatelessWidget {
                 ),
               ),
             ),
-            list,
+            BaseWidget(builder: (_, screenSize) {
+              return SizedBox(height: screenSize.height * 0.18, child: list);
+            })
           ],
         ),
       ),

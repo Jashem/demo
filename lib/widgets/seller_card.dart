@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets.dart';
@@ -26,18 +27,14 @@ class SellerCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
-                  backgroundImage,
-                ),
+                image: CachedNetworkImageProvider(backgroundImage),
               ),
             ),
           ),
           Positioned(
             left: 8,
             top: 4,
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(profileImage),
-            ),
+            child: CircleImage(imageUrl: profileImage),
           ),
           Positioned(
             bottom: 0,
@@ -55,6 +52,8 @@ class SellerCard extends StatelessWidget {
               child: Text(
                 sellerName,
                 textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
                 style: TextStyle(color: Colors.white),
               ),
             ),
